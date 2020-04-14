@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MentalTraining</string>
+    <string name="title_activity_speed_numbers">SpeedNumbersActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="speed_number_string">TextView</string>
+</resources>
