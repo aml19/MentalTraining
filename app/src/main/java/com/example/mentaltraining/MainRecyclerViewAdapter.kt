@@ -15,13 +15,9 @@ import androidx.recyclerview.widget.RecyclerView
  */
 class MainRecyclerViewAdapter (private val categoryList : Array<String>, onRecyclerItemClick : OnRecyclerItemClick) : RecyclerView.Adapter<MainRecyclerViewAdapter.ViewHolder>() {
 
-    private val mOnItemClick : OnRecyclerItemClick
-    private val mCategoryList : Array<String>
+    private val mOnItemClick : OnRecyclerItemClick = onRecyclerItemClick
+    private val mCategoryList : Array<String> = categoryList
 
-    init{
-        mOnItemClick = onRecyclerItemClick
-        mCategoryList = categoryList
-    }
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
