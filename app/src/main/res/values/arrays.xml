@@ -1,4 +1,19 @@
 <resources>
+    <!-- Arithmetic Operation List -->
+    <string-array name="arithmetic_operations">
+        <item>Addition</item>
+        <item>Subtraction</item>
+        <item>Multiplication</item>
+        <item>Division</item>
+    </string-array>
+    <!-- Number of digits -->
+    <integer-array name="addition_digits">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </integer-array>
+
     <!-- Reply Preference -->
     <string-array name="reply_entries">
         <item>Reply</item>

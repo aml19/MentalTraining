@@ -7,43 +7,52 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
-
-    <TextView
-        android:id="@+id/textView2"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/main_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="405dp"
-        android:layout_height="663dp" >
+    <ScrollView
+        android:id="@+id/main_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/arithmetic_main"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="FFFFFFFFFFF"
-            android:textSize="36sp" />
-        <TextView
-            android:id="@+id/speed_numbers_main"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="FFFFFFFFFFF"
-            android:textSize="36sp" />
-        <TextView
-            android:id="@+id/names_faces_main"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="FFFFFFFFFFF"
-            android:textSize="36sp" />
-        <TextView
-            android:id="@+id/cards_main"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="FFFFFFFFFFF"
-            android:textSize="36sp" />
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/arithmetic_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Arithmetic"
+                android:textSize="36sp" />
 
-    </androidx.recyclerview.widget.RecyclerView>
+            <TextView
+                android:id="@+id/speed_numbers_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Speed Numbers"
+                android:textSize="36sp" />
 
+            <TextView
+                android:id="@+id/names_faces_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Names and Faces"
+                android:textSize="36sp" />
+
+            <TextView
+                android:id="@+id/cards_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Deck O Cards"
+                android:textSize="36sp" />
+
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

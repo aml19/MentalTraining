@@ -7,6 +7,7 @@ import android.text.Layout
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.ScrollView
 import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -35,13 +36,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.main_toolbar)
         setSupportActionBar(toolbar)
 
-        // Setup the recyclerView and set the adapter
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-
-        //setting up back button
-        val backButton = findViewById<Button>(R.id.backButton)
-        backButton.setOnClickListener(this)
+        val scrollView = findViewById<ScrollView>(R.id.main_scroll_view)
 
         //testing cards : WORKS!!!!
         val deck : Deck = Deck()
@@ -51,5 +46,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         TODO("Not yet implemented")
     }
+
+
 
 }
