@@ -42,8 +42,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, MainRecyclerView
         val adapter = MainRecyclerViewAdapter(resources.getStringArray(R.array.main_categories), this)
         recyclerView.adapter = adapter
 
-        //val scrollView = findViewById<ScrollView>(R.id.main_scroll_view)
-
         //testing cards : WORKS!!!!
         val deck : Deck = Deck()
         deck.shuffle()
@@ -54,9 +52,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, MainRecyclerView
         TODO("Not yet implemented")
     }
 
-    //Interface to get the exact item that's selected
+    /*
+        Calls SettingsActivity and passes name of selected category
+     */
     override fun onItemClick(position: Int) {
-        TODO("Not yet implemented")
+        Log.d(ContentValues.TAG, "Main Activity $position.")
+
+        //call new activity and pass name of category
+        val intent = Intent(this@MainActivity, SettingsActivity::class.java)
+        intent.putExtra("Name", resources.getStringArray(R.array.main_categories)[position])
+        startActivity(intent)
     }
 
 

@@ -1,29 +1,58 @@
 <resources>
     <!-- List of Main Categories -->
     <string-array name="main_categories">
-        <item>Arithmetic</item>
-        <item>Speed Numbers</item>
-        <item>Speed Cards</item>
-        <item>Names and Faces</item>
-        <item>Poetry</item>
+        <item>@string/arithmetic</item>
+        <item>@string/speed_numbers</item>
+        <item>@string/speed_cards</item>
+        <item>@string/poetry</item>
+        <item>@string/names_and_faces</item>
     </string-array>
-    <!-- Arithmetic Operation List -->
+
+    <!-- Arithmetic -->
     <string-array name="arithmetic_operations">
         <item>Addition</item>
         <item>Subtraction</item>
         <item>Multiplication</item>
         <item>Division</item>
     </string-array>
-    <!-- Number of digits -->
-    <integer-array name="addition_digits">
+
+    <string-array name="addition_digits_array">
         <item>1</item>
         <item>2</item>
         <item>3</item>
         <item>4</item>
-    </integer-array>
+    </string-array>
 
+    <string-array name="subtraction_digits_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
 
-    <!-- Auto Generated *******************************************-->
+    <string-array name="multiplication_digits_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="division_digits_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <!-- Speed Numbers -->
+    <string-array name="speed_num_rows_cols">
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+    </string-array>
+
+    <!--************************************ Auto Generated *******************************************-->
     <!-- Reply Preference -->
     <string-array name="reply_entries">
         <item>Reply</item>

@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.TextViewCompat
+import androidx.preference.PreferenceManager
 
 
 class SpeedNumbersActivity : AppCompatActivity(), View.OnClickListener {
@@ -20,11 +21,15 @@ class SpeedNumbersActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.speed_numbers_main_layout)
 
-        //mNumbers2DArray = generateRandomNumbers(25, 20)
-        //val temp = convert2DArrayToString(mNumbers2DArray)
+        //load preference data
+        val preferences = PreferenceManager.getDefaultSharedPreferences(baseContext)
+        val rows = preferences.getString("speed_num_row", "NULL")?.toInt() ?: 5
+        val cols = preferences.getString("speed_num_col", "NULL")?.toInt() ?: 5
 
         val textView = findViewById<TextView>(R.id.speedNumberTextView)
-        textView.text = convert2DArrayToString(generateRandomNumbers(25, 20))
+        textView.text = convert2DArrayToString(generateRandomNumbers(rows, cols))
+
+        //auto sizing text
         textView.setAutoSizeTextTypeWithDefaults(TextView.AUTO_SIZE_TEXT_TYPE_UNIFORM)
 
         val clearButton = findViewById<Button>(R.id.clearSpeedNumbersButton)
@@ -39,7 +44,9 @@ class SpeedNumbersActivity : AppCompatActivity(), View.OnClickListener {
         editNumberTextView.visibility = View.VISIBLE
     }
 
-    //generates 2D array with random 1 digit numbers filling each element
+    /*
+        generates 2D array with random 1 digit numbers filling each element
+     */
     private fun generateRandomNumbers(rows : Int, col : Int) : Array<IntArray>{
         var result = Array(rows) {IntArray(col){0} }
         for(i in 0 until rows){
@@ -50,16 +57,17 @@ class SpeedNumbersActivity : AppCompatActivity(), View.OnClickListener {
         return result
     }
 
+    /*
+        Makes a string of 2D matrix to be displayed in a textView
+     */
     private fun convert2DArrayToString(array : Array<IntArray>) : String{
         var result = ""
         for(i in array.indices){
-            for(j in array[i]){
+            for(j in array[i].indices){
                 result += array[i][j].toString() + " "
             }
             result += "\n"
         }
         return result
     }
-
-
 }

@@ -1,7 +1,28 @@
 <resources>
 
-    <string name="arithmetic_settings_header">Settings</string>
+    <!-- Main Categories-->
+    <string name="arithmetic">Arithmetic</string>
+    <string name="speed_numbers">Speed Numbers</string>
+    <string name="poetry">Poetry</string>
+    <string name="speed_cards">Speed Cards</string>
+    <string name="names_and_faces">Names and Faces</string>
 
+    <!-- For Settings Activity -->
+    <string name="settings_header">Settings</string>
+    <string name="start_button">Start</string>
+
+    <string name="arithmetic_preference">Arithmetic</string>
+    <string name="operation_type">Operation Type</string>
+    <string name="arithmetic_auto_refresh">Auto Refreshes New Question When Correct</string>
+    <string name="digits_title">Digits of Operands</string>
+
+    <string name="addition">Addition</string>
+    <string name="subtraction">Subtraction</string>
+    <string name="multiplication">Multiplication</string>
+    <string name="division">Division</string>
+
+    <string name="speed_num_row">Number of Rows</string>
+    <string name="speed_num_col">Number of Columns</string>
 
     <!-- Auto-Generated -->
     <string name="app_name">MentalTraining</string>

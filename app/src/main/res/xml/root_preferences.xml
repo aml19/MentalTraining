@@ -1,18 +1,6 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="@string/arithmetic_settings_header">
-        <ListPreference
-            app:defaultValue="Addition"
-            app:entries="@array/arithmetic_operations"
-            app:entryValues="@array/arithmetic_operations"
-            app:key="arithmetic_settings_header"
-            app:summary="Choose arithmetic operation type"
-            app:title="Operation Type" />
-
-
-    </PreferenceCategory>
-
     <PreferenceCategory app:title="@string/messages_header">
 
         <EditTextPreference
