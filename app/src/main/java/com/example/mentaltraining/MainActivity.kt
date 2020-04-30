@@ -189,6 +189,19 @@ class MainActivity : AppCompatActivity(), MainRecyclerViewAdapter.OnRecyclerItem
         result.add(speedNumbers)
         result.add(arithmetic)
         result.add(namesAndFaces)
+        result.add(DisplayListItem("Test"))
+        result.add(DisplayListItem("Test"))
+        result.add(DisplayListItem("Test"))
+        result.add(DisplayListItem("Test"))
+        result.add(DisplayListItem("Test"))
+        result.add(DisplayListItem("Test"))
+        result.add(DisplayListItem("Test"))
+        result.add(DisplayListItem("Test"))
+        result.add(DisplayListItem("Test"))
+        result.add(DisplayListItem("Test"))
+        result.add(DisplayListItem("Test"))
+        result.add(DisplayListItem("Test"))
+        result.add(DisplayListItem("Test"))
 
         result.sort()   //keeps list in alphabetical order
 
