@@ -15,44 +15,9 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
 
-    <ScrollView
-        android:id="@+id/main_scroll_view"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/main_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/arithmetic_main"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Arithmetic"
-                android:textSize="36sp" />
-
-            <TextView
-                android:id="@+id/speed_numbers_main"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Speed Numbers"
-                android:textSize="36sp" />
-
-            <TextView
-                android:id="@+id/names_faces_main"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Names and Faces"
-                android:textSize="36sp" />
-
-            <TextView
-                android:id="@+id/cards_main"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Deck O Cards"
-                android:textSize="36sp" />
-
-
-        </LinearLayout>
-    </ScrollView>
 </LinearLayout>

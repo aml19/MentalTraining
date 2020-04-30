@@ -1,4 +1,12 @@
 <resources>
+    <!-- List of Main Categories -->
+    <string-array name="main_categories">
+        <item>Arithmetic</item>
+        <item>Speed Numbers</item>
+        <item>Speed Cards</item>
+        <item>Names and Faces</item>
+        <item>Poetry</item>
+    </string-array>
     <!-- Arithmetic Operation List -->
     <string-array name="arithmetic_operations">
         <item>Addition</item>
@@ -14,6 +22,8 @@
         <item>4</item>
     </integer-array>
 
+
+    <!-- Auto Generated *******************************************-->
     <!-- Reply Preference -->
     <string-array name="reply_entries">
         <item>Reply</item>
