@@ -2,6 +2,7 @@ package com.example.mentaltraining
 
 import android.content.ContentValues.TAG
 import android.content.DialogInterface.OnClickListener
+import android.provider.Settings.Global.getString
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View

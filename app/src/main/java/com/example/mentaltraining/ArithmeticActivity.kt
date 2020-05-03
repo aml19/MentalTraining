@@ -6,7 +6,11 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.isDigitsOnly
+import androidx.preference.PreferenceManager
+import kotlin.math.pow
 
 class ArithmeticActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -34,16 +38,20 @@ class ArithmeticActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.arithmetic_main_layout)
+        val preferences = PreferenceManager.getDefaultSharedPreferences(baseContext)
 
         //setting operands
-        firstNumberInt  = (1..999).random()
-        secondNumberInt = (1..999).random()
+        val digits = preferences.getString("addition_digits_key", "NULL")?.toInt() ?: 3
+        //Toast.makeText(this, preferences.getString("addition_digits_key", "NULL"), Toast.LENGTH_LONG ).show()
+        firstNumberInt  = getRandomNumber(digits)
+        secondNumberInt = getRandomNumber(digits)
         firstNumberString  = firstNumberInt.toString()
         secondNumberString = secondNumberInt.toString()
 
         //get category type
-        val operationTypeString = getIntent().getStringExtra("itemSelected")
-        Log.d(ContentValues.TAG, "operationTypeString: " + operationTypeString)
+        val operationTypeString = preferences.getString(resources.getString(R.string.operation_type), "NULL")
+        Log.d(ContentValues.TAG, "operationTypeString: $operationTypeString")
+
         when(operationTypeString){
             "Addition" -> {
                 operationType = OPERATION_TYPE.ADDITION
@@ -73,11 +81,8 @@ class ArithmeticActivity : AppCompatActivity(), View.OnClickListener {
         val secondNumberText = findViewById<TextView>(R.id.secondNumber)
         secondNumberText.text = (secondNumberString)
 
-
         //set onClickListeners for calculator buttons
         var calculatorButton = findViewById<Button>(R.id.calculator_seven)
-        calculatorButton.setOnClickListener(this)
-        calculatorButton = findViewById<Button>(R.id.calculator_seven)
         calculatorButton.setOnClickListener(this)
         calculatorButton = findViewById<Button>(R.id.calculator_eight)
         calculatorButton.setOnClickListener(this)
@@ -144,30 +149,37 @@ class ArithmeticActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.calculator_zero -> mAnswerText += "0"
             R.id.calculator_delete-> mAnswerText = mAnswerText.dropLast(1)
-            R.id.calculator_enter ->  {
+            R.id.calculator_enter -> {
                 clear = true
                 mAnswerText =
-                if(checkAnswer())
-                    "Correct!"
-                else
-                    "You Suck!"
+                    if (checkAnswer())
+                        "Correct!"
+                    else
+                        "You Suck!"
             }
         }
 
-        answerTextView.setText(mAnswerText)
+        answerTextView.text = mAnswerText
     }
 
-    fun checkAnswer() : Boolean {
-        when(operationType) {
-            OPERATION_TYPE.ADDITION -> return mAnswerText.toInt() == firstNumberInt + secondNumberInt
-            OPERATION_TYPE.SUBTRACTION -> return mAnswerText.toInt() == firstNumberInt - secondNumberInt
-            OPERATION_TYPE.MULTIPLICATION -> return mAnswerText.toInt() == firstNumberInt * secondNumberInt
-            OPERATION_TYPE.DIVISION -> return mAnswerText.toInt() == firstNumberInt / secondNumberInt     //no decimals for now
+    private fun checkAnswer() : Boolean {
+        if(mAnswerText == "") return false
+        return when(operationType) {
+            OPERATION_TYPE.ADDITION -> mAnswerText.toInt() == firstNumberInt + secondNumberInt
+            OPERATION_TYPE.SUBTRACTION -> mAnswerText.toInt() == firstNumberInt - secondNumberInt
+            OPERATION_TYPE.MULTIPLICATION -> mAnswerText.toInt() == firstNumberInt * secondNumberInt
+            OPERATION_TYPE.DIVISION -> mAnswerText.toInt() == firstNumberInt / secondNumberInt     //no decimals for now
             else -> {
-                return false
+                false
             }
         }
         return false
+    }
+
+    //gets random number with specified digits
+    private fun getRandomNumber(digits : Int) : Int {
+        val range = 10.toDouble().pow(digits)
+        return (1 until range.toInt()).random()
     }
 }
 
