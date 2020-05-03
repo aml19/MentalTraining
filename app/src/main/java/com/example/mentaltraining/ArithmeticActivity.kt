@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.isDigitsOnly
 import androidx.preference.PreferenceManager
 import kotlin.math.pow
 
@@ -37,18 +38,15 @@ class ArithmeticActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.arithmetic_main_layout)
-
         val preferences = PreferenceManager.getDefaultSharedPreferences(baseContext)
 
         //setting operands
-        val digits = preferences.getString("addition_digits_key", "NULL")?.toInt()
-        //firstNumberInt  = getRandomNumber(preferences.getString(resources.getString(R.array.addition_digits)))
-        Toast.makeText(this, preferences.getString("addition_digits_key", "NULL"), Toast.LENGTH_LONG ).show()
+        val digits = preferences.getString("addition_digits_key", "NULL")?.toInt() ?: 3
+        //Toast.makeText(this, preferences.getString("addition_digits_key", "NULL"), Toast.LENGTH_LONG ).show()
         firstNumberInt  = getRandomNumber(digits)
         secondNumberInt = getRandomNumber(digits)
         firstNumberString  = firstNumberInt.toString()
         secondNumberString = secondNumberInt.toString()
-
 
         //get category type
         val operationTypeString = preferences.getString(resources.getString(R.string.operation_type), "NULL")
@@ -83,11 +81,8 @@ class ArithmeticActivity : AppCompatActivity(), View.OnClickListener {
         val secondNumberText = findViewById<TextView>(R.id.secondNumber)
         secondNumberText.text = (secondNumberString)
 
-
         //set onClickListeners for calculator buttons
         var calculatorButton = findViewById<Button>(R.id.calculator_seven)
-        calculatorButton.setOnClickListener(this)
-        calculatorButton = findViewById<Button>(R.id.calculator_seven)
         calculatorButton.setOnClickListener(this)
         calculatorButton = findViewById<Button>(R.id.calculator_eight)
         calculatorButton.setOnClickListener(this)
@@ -154,13 +149,13 @@ class ArithmeticActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.calculator_zero -> mAnswerText += "0"
             R.id.calculator_delete-> mAnswerText = mAnswerText.dropLast(1)
-            R.id.calculator_enter ->  {
+            R.id.calculator_enter -> {
                 clear = true
                 mAnswerText =
-                if(checkAnswer())
-                    "Correct!"
-                else
-                    "You Suck!"
+                    if (checkAnswer())
+                        "Correct!"
+                    else
+                        "You Suck!"
             }
         }
 
@@ -168,6 +163,7 @@ class ArithmeticActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun checkAnswer() : Boolean {
+        if(mAnswerText == "") return false
         return when(operationType) {
             OPERATION_TYPE.ADDITION -> mAnswerText.toInt() == firstNumberInt + secondNumberInt
             OPERATION_TYPE.SUBTRACTION -> mAnswerText.toInt() == firstNumberInt - secondNumberInt
@@ -181,13 +177,9 @@ class ArithmeticActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     //gets random number with specified digits
-    private fun getRandomNumber(digits : Int?) : Int {
-        val range = digits?.let { 10.toDouble().pow(it) }
-        return if (range != null) {
-            (1..range.toInt()).random()
-        } else{
-            (1..99).random()
-        }
+    private fun getRandomNumber(digits : Int) : Int {
+        val range = 10.toDouble().pow(digits)
+        return (1 until range.toInt()).random()
     }
 }
 

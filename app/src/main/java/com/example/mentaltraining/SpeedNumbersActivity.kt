@@ -2,10 +2,12 @@ package com.example.mentaltraining
 
 import android.os.Build
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.TextViewCompat
@@ -14,6 +16,7 @@ import androidx.preference.PreferenceManager
 
 class SpeedNumbersActivity : AppCompatActivity(), View.OnClickListener {
 
+    var toggleButton = true    //keeps track of reading or answering textView
     //variable to hold 2 dimensional array of numbers to be displayed
     var mNumbers2DArray = arrayOf<IntArray>()
     @RequiresApi(Build.VERSION_CODES.O)
@@ -23,25 +26,35 @@ class SpeedNumbersActivity : AppCompatActivity(), View.OnClickListener {
 
         //load preference data
         val preferences = PreferenceManager.getDefaultSharedPreferences(baseContext)
+        //if null return, sets default value to 5
         val rows = preferences.getString("speed_num_row", "NULL")?.toInt() ?: 5
         val cols = preferences.getString("speed_num_col", "NULL")?.toInt() ?: 5
 
-        val textView = findViewById<TextView>(R.id.speedNumberTextView)
-        textView.text = convert2DArrayToString(generateRandomNumbers(rows, cols))
+        //textView that contains the 2D matrix to be displayed
+        val matrixTextView = findViewById<TextView>(R.id.speedNumberTextView)
+        matrixTextView.movementMethod = ScrollingMovementMethod()
+        matrixTextView.text = convert2DArrayToString(generateRandomNumbers(rows, cols))
 
-        //auto sizing text
-        textView.setAutoSizeTextTypeWithDefaults(TextView.AUTO_SIZE_TEXT_TYPE_UNIFORM)
+        //auto sizing text based on the size of array
+        matrixTextView.setAutoSizeTextTypeUniformWithConfiguration(32, 128, 2, 1)
 
+        Toast.makeText(this, matrixTextView.textSize.toString(), Toast.LENGTH_LONG ).show()
+        //button that user presses to fill out their answer
         val clearButton = findViewById<Button>(R.id.clearSpeedNumbersButton)
         clearButton.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
-        val numberTextView = findViewById<TextView>(R.id.speedNumberTextView)
-        numberTextView.visibility = View.GONE
+        when(v?.id) {
+            R.id.clearSpeedNumbersButton->{
+                val numberTextView = findViewById<TextView>(R.id.speedNumberTextView)
+                numberTextView.visibility = View.GONE
 
-        val editNumberTextView = findViewById<EditText>(R.id.numberInputEditText)
-        editNumberTextView.visibility = View.VISIBLE
+                val editNumberTextView = findViewById<EditText>(R.id.numberInputEditText)
+                editNumberTextView.visibility = View.VISIBLE
+            }
+
+        }
     }
 
     /*
