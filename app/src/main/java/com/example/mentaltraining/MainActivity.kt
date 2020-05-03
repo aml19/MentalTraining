@@ -32,11 +32,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, MainRecyclerView
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        //setting up toolbar
-        //val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.main_toolbar)
-        //setSupportActionBar(toolbar)
-
+        //fill recycler view with main categories array elements
         val recyclerView = findViewById<RecyclerView>(R.id.main_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         val adapter = MainRecyclerViewAdapter(resources.getStringArray(R.array.main_categories), this)
@@ -56,8 +52,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, MainRecyclerView
         Calls SettingsActivity and passes name of selected category
      */
     override fun onItemClick(position: Int) {
-        Log.d(ContentValues.TAG, "Main Activity $position.")
-
         //call new activity and pass name of category
         val intent = Intent(this@MainActivity, SettingsActivity::class.java)
         intent.putExtra("Name", resources.getStringArray(R.array.main_categories)[position])
