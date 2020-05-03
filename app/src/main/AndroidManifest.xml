@@ -11,8 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".MemoryCards"
+            android:label="@string/title_activity_memory_cards"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:label="@string/title_activity_settings" />
         <activity
             android:name=".CategorySetup"
             android:label="@string/title_activity_category_setup"

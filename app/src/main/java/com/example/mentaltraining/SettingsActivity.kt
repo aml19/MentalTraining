@@ -12,23 +12,26 @@ import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
 
+/*
+    This activity parses which game to Start and has the settings interface for each game
+ */
+
 class SettingsActivity : AppCompatActivity(), View.OnClickListener {
 
-    public var mName = String()
+    var mName = String()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.settings_activity)      //basic settings layout for everything
 
-        //get category name
+        //get category name from Main Activity
         mName = intent.getStringExtra("Name")
+
+        //loads data
         val preferences = PreferenceManager.getDefaultSharedPreferences(baseContext)
 
         //displays correct preferences depending on what was selected
         when(mName){
             resources.getString(R.string.arithmetic) -> {
-                //Parse which operand settings to use
-                //get operationType resource
-                //set preferenceOnChangeListener to operationType
                 val operationTypePreference = preferences
                 supportFragmentManager
                     .beginTransaction()
@@ -50,6 +53,7 @@ class SettingsActivity : AppCompatActivity(), View.OnClickListener {
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        //button that calls the specified game activity
         val startButton = findViewById<Button>(R.id.start_button)
         startButton.setOnClickListener(this)
     }

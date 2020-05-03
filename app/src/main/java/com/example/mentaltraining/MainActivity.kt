@@ -14,17 +14,8 @@ import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-/*TODO
-    -implement pixel back button
-    -make separate list of sub categories Addition -> num digits, decimals, etc
-        -or do settings
-    -make settings file for each subcategory
-    -make separate activity for each
- */
-
 /*
     Main Activity shows and keeps track of all menu items and their sub menu items until a new activity is needed
-
  */
 class MainActivity : AppCompatActivity(), View.OnClickListener, MainRecyclerViewAdapter.OnRecyclerItemClick {
 

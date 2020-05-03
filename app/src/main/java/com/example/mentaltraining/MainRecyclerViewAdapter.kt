@@ -11,8 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 /*
-    Adapter class for all the recycler view containers in the main menu lists.
-    It takes Array<String> and binds values,onClickListeners,etc to each item in recycler view
+    Takes Array<String> and binds values,onClickListeners,etc to each item in recycler view
  */
 class MainRecyclerViewAdapter (private val categoryList : Array<String>, onRecyclerItemClick : OnRecyclerItemClick) : RecyclerView.Adapter<MainRecyclerViewAdapter.ViewHolder>() {
 
