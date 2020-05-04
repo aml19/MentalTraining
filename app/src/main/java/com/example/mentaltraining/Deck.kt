@@ -36,10 +36,18 @@ class Deck {
         }
     }
 
+    fun getSize() : Int {
+        return mCards.size
+    }
+
+    fun getAtIndex(index : Int) : Card {
+        return mCards[index]
+    }
+
     /*
         private class Card() has suit/value like regular playing card deck
      */
-    private class Card (suit : Suit, value : Int){
+    class Card (suit : Suit, value : Int){
         enum class Suit (val value : Int){
             DIAMOND(0),
             CLUB(1),

@@ -56,6 +56,8 @@ class SettingsActivity : AppCompatActivity(), View.OnClickListener {
         //button that calls the specified game activity
         val startButton = findViewById<Button>(R.id.start_button)
         startButton.setOnClickListener(this)
+
+        val test = findViewById<Button>(R.id.memory_card_start_button)
     }
 
     override fun onClick(v: View?) {
@@ -67,6 +69,10 @@ class SettingsActivity : AppCompatActivity(), View.OnClickListener {
             }
             resources.getString(R.string.speed_numbers) -> {
                 val intent = Intent(this@SettingsActivity, SpeedNumbersActivity::class.java)
+                startActivity(intent)
+            }
+            resources.getString(R.string.speed_cards) -> {
+                val intent = Intent(this@SettingsActivity, CardsActivity::class.java)
                 startActivity(intent)
             }
             else -> {

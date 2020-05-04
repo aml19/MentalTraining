@@ -1,7 +1,9 @@
 package com.example.mentaltraining
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 
 /*
@@ -12,21 +14,40 @@ class CardImageRecyclerViewAdapter(private val deck : Deck) : RecyclerView.Adapt
         parent: ViewGroup,
         viewType: Int
     ): CardImageRecyclerViewAdapter.ViewHolder {
-
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.playing_card_view, parent, false)
+        return ViewHolder(v)
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return deck.getSize()
     }
 
     override fun onBindViewHolder(holder: CardImageRecyclerViewAdapter.ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        //pass in resource ID of the card so it will bind it to an imageView
+        holder.bindItems(deck.getAtIndex(position).getImageFileID(), position)
     }
 
-    class ViewHolder(imageView : View) : RecyclerView.ViewHolder(imageView){
+    class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
-        //sets the image view to a card
-        fun bindItems()
+        fun bindItems(id : Int, position : Int){    //sets the image view to a card.  ID corresponds to a jpg file in resources
+            val view = itemView.findViewById(R.id.playing_card_view) as ImageView
+            view.setImageResource(id)
+           /* when(position%3){
+                0-> {
+                    val view = itemView.findViewById(R.id.playing_card_view) as ImageView
+                    view.setImageResource(id)
+                }
+                1-> {
+                    val view = itemView.findViewById(R.id.playing_card_2) as ImageView
+                    view.setImageResource(id)
+                }
+                else-> {
+                    val view = itemView.findViewById(R.id.playing_card_3) as ImageView
+                    view.setImageResource(id)
+                }
+            }*/
+
+        }
     }
 
 }
