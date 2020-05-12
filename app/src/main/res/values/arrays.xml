@@ -45,13 +45,21 @@
     </string-array>
 
     <!-- Speed Numbers -->
-    <string-array name="speed_num_rows_cols">
+    <string-array name="speed_num_rows">
         <item>5</item>
         <item>10</item>
         <item>15</item>
         <item>20</item>
+        <item>30</item>
         <item>40</item>
-        <item>60</item>
+        <item>50</item>
+    </string-array>
+
+    <string-array name="speed_num_cols">
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
     </string-array>
 
     <!--************************************ Auto Generated *******************************************-->

@@ -14,20 +14,11 @@
         android:verticalScrollbarPosition="defaultPosition"
         android:scrollbars="vertical"/>
 
-    <EditText
-        android:id="@+id/numberInputEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="10"
-        android:autofillHints="@string/app_name"
-        android:hint="Type here for keyboard"
-        android:inputType="number"
-        android:visibility="gone" />
-
     <Button
         android:id="@+id/clearSpeedNumbersButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="Begin " />
+
 </LinearLayout>

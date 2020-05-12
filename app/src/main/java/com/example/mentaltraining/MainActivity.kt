@@ -28,10 +28,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, MainRecyclerView
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         val adapter = MainRecyclerViewAdapter(resources.getStringArray(R.array.main_categories), this)
         recyclerView.adapter = adapter
-
-        //testing cards : WORKS!!!!
-        val deck : Deck = Deck()
-        deck.shuffle()
     }
 
     //Might not need this method
@@ -48,6 +44,4 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, MainRecyclerView
         intent.putExtra("Name", resources.getStringArray(R.array.main_categories)[position])
         startActivity(intent)
     }
-
-
 }

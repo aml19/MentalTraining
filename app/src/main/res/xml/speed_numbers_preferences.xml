@@ -6,15 +6,15 @@
         <ListPreference
             app:title="@string/speed_num_row"
             app:key="speed_num_row"
-            app:entries="@array/speed_num_rows_cols"
-            app:entryValues="@array/speed_num_rows_cols"
+            app:entries="@array/speed_num_rows"
+            app:entryValues="@array/speed_num_rows"
             app:summary="%s"
             app:defaultValue="5"/>
         <ListPreference
             app:title="@string/speed_num_col"
             app:key="speed_num_col"
-            app:entries="@array/speed_num_rows_cols"
-            app:entryValues="@array/speed_num_rows_cols"
+            app:entries="@array/speed_num_cols"
+            app:entryValues="@array/speed_num_cols"
             app:summary="%s"
             app:defaultValue="5"/>
     </PreferenceCategory>
