@@ -2,20 +2,21 @@ package com.example.mentaltraining
 
 import android.widget.ImageView
 import java.lang.Math.random
+import java.lang.NumberFormatException
 import java.util.*
 import kotlin.collections.ArrayList
 
 class Deck {
 
     private var mCards : Array<Card> = arrayOf<Card>()
-
+    private var mPartialDeck = arrayListOf<Card>()
     //initializes deck with cards
     init{
-        make()
+
     }
 
     //fills the deck with cards of standard 52 playing card deck
-    private fun make(){
+    fun make(){
         val result : ArrayList<Card> = arrayListOf()    //holds all the cards
         //goes through each iteration of cards
         for(i in 0..3){
@@ -36,6 +37,12 @@ class Deck {
         }
     }
 
+    //adds a card to an empty deck(for answer speed card layout)
+    fun addCard(card: Card){
+        mPartialDeck.add(card)
+        mCards = mPartialDeck.toTypedArray()
+    }
+
     fun getSize() : Int {
         return mCards.size
     }
@@ -44,8 +51,19 @@ class Deck {
         return mCards[index]
     }
 
+    fun compare(deck : Deck) : Boolean {
+        if(deck.getSize() != this.getSize())
+            return false
+        for(i in 0 until this.getSize()){
+            if(!mCards[i].equals(deck.getAtIndex(i))){
+                return false
+            }
+        }
+        return true
+    }
+
     /*
-        private class Card() has suit/value like regular playing card deck
+        class Card() has suit/value like regular playing card deck
      */
     class Card (suit : Suit, value : Int){
         enum class Suit (val value : Int){
@@ -62,11 +80,36 @@ class Deck {
         var mSuit : Suit = Suit.DIAMOND
         var mValue :Int = 0
         var mName : String = ""
-        //constructor that sets private member fields
+
         init{
             mSuit = suit
             mValue = value
             mName = convertValToString(value) + " of " + suit.toString()
+        }
+        constructor(suit : String, value : String) : this(Suit.DIAMOND, 2){
+            mSuit = when(suit){
+                "Diamonds"->Suit.DIAMOND
+                "Hearts"->Suit.HEART
+                "Clubs"->Suit.CLUB
+                else->{Suit.SPADE}
+            }
+            val convertNumber : Int? =
+                try{
+                    value.toInt()
+                }
+                catch(e: NumberFormatException){
+                    when(value){
+                        "Jack"->11
+                        "Queen"->12
+                        "King"->13
+                        else->{14}
+                    }
+                }
+            mValue = convertNumber ?: 2
+        }
+
+        fun equals(other: Card): Boolean{
+            return (this.mValue == other.mValue && this.mSuit == other.mSuit)
         }
 
         //converts card value to string (for face cards mostly)

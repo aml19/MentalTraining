@@ -32,20 +32,6 @@ class CardImageRecyclerViewAdapter(private val deck : Deck) : RecyclerView.Adapt
         fun bindItems(id : Int, position : Int){    //sets the image view to a card.  ID corresponds to a jpg file in resources
             val view = itemView.findViewById(R.id.playing_card_view) as ImageView
             view.setImageResource(id)
-           /* when(position%3){
-                0-> {
-                    val view = itemView.findViewById(R.id.playing_card_view) as ImageView
-                    view.setImageResource(id)
-                }
-                1-> {
-                    val view = itemView.findViewById(R.id.playing_card_2) as ImageView
-                    view.setImageResource(id)
-                }
-                else-> {
-                    val view = itemView.findViewById(R.id.playing_card_3) as ImageView
-                    view.setImageResource(id)
-                }
-            }*/
 
         }
     }

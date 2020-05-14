@@ -62,6 +62,30 @@
         <item>20</item>
     </string-array>
 
+    <!-- Speed Cards -->
+    <string-array name="speed_cards_rank">
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>Jack</item>
+        <item>Queen</item>
+        <item>King</item>
+        <item>Ace</item>
+    </string-array>
+
+    <string-array name="speed_cards_suit">
+        <item>Diamonds</item>
+        <item>Hearts</item>
+        <item>Clubs</item>
+        <item>Spades</item>
+    </string-array>
+
     <!--************************************ Auto Generated *******************************************-->
     <!-- Reply Preference -->
     <string-array name="reply_entries">

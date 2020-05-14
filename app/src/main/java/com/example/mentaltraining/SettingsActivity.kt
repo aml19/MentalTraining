@@ -46,10 +46,16 @@ class SettingsActivity : AppCompatActivity(), View.OnClickListener {
                     .replace(R.id.settings, SpeedNumbersSettingsFragment())
                     .commit()
             }
+            resources.getString(R.string.speed_cards) -> {
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.settings, SpeedNumbersSettingsFragment())
+                    .commit()
+            }
             else -> {
                 supportFragmentManager
                     .beginTransaction()
-                    .replace(R.id.settings, ArithmeticSettingsFragment())
+                    .replace(R.id.settings, SpeedCardsSettingsFragment())
                     .commit()
             }
         }
@@ -88,7 +94,6 @@ class SettingsActivity : AppCompatActivity(), View.OnClickListener {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
         }
     }
-
 
     class ArithmeticSettingsFragment : PreferenceFragmentCompat() {
         //TODO filter out what to display based on operationType selected
@@ -143,6 +148,12 @@ class SettingsActivity : AppCompatActivity(), View.OnClickListener {
     class SpeedNumbersSettingsFragment : PreferenceFragmentCompat() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.speed_numbers_preferences, rootKey)
+        }
+    }
+
+    class SpeedCardsSettingsFragment : PreferenceFragmentCompat() {
+        override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+            setPreferencesFromResource(R.xml.speed_cards_preferences, rootKey)
         }
     }
 

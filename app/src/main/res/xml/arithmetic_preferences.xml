@@ -65,7 +65,5 @@
                 app:defaultValue="2"
                 app:isPreferenceVisible="true" />
         </PreferenceCategory>
-
     </PreferenceCategory>
-
 </PreferenceScreen>
